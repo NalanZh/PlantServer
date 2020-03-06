@@ -11,22 +11,23 @@ import myhomework.plantserver.PlantConstants;
 public class Simulation implements PlantConstants{
     private shooter outer;
     private bullet ball;
-    private shooter boxOne;
-    private shooter boxTwo;
+    private shooter s1;
+    private shooter s2;
     private Lock lock;
     
     public Simulation(int dX,int dY)
     {
-        outer = new Box(0,0,WIDTH,HEIGHT,false);
-        ball = new Ball(WIDTH/2,WIDTH/2,dX,dY);
-        boxOne = new Box(MARGIN,MARGIN, THICKNESS, LENGTH,true);
-        boxTwo = new Box(WIDTH - MARGIN - THICKNESS,MARGIN, LENGTH, THICKNESS,true);
+        s1 = new shooter(MARGIN,MARGIN, THICKNESS, LENGTH,true);
+        s2 = new shooter(WIDTH - MARGIN - THICKNESS,MARGIN, LENGTH, THICKNESS,true);
         lock = new ReentrantLock();
     }
     
     public void evolve(double time)
     {
         lock.lock();
+        
+        
+        
         Ray newLoc = boxOne.bounceRay(ball.getRay(), time);
         if(newLoc != null)
             ball.setRay(newLoc);
@@ -40,12 +41,13 @@ public class Simulation implements PlantConstants{
                     ball.setRay(newLoc);
                 else
                     ball.move(time);
-            }                
-        } 
+            }                //copy from Gregg need to revise
+            } 
+        
         lock.unlock();
     }
     
-    public void moveBox(int box,int deltaX,int deltaY)
+    public void movePlayer(int player,int deltaX,int deltaY)
     {//moving paddles 
         lock.lock();
         Box mover = boxOne;
