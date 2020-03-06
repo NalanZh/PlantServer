@@ -5,7 +5,6 @@
  */
 package myhomework.plantserver;
 
-import javafx.scene.effect.Light.Point;
 
 /**
  *
