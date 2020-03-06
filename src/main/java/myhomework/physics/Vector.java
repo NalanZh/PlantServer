@@ -1,4 +1,4 @@
-package myhomework.plantserver;
+package myhomework.physics;
 
 /** A simple class to represent vectors. Includes convenience
  *  methods for standard vector operations. **/
