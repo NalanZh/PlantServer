@@ -7,7 +7,7 @@ package myhomework.physics;
 
 /**
  *
- * @author samsung1
+ * @author Khanh Toan
  */
 public class Point {
     public double x;
@@ -19,4 +19,3 @@ public class Point {
         this.y = y;
     }
 }
-
