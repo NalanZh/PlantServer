@@ -17,42 +17,25 @@ public class Simulation implements PlantConstants{
     
     public Simulation(int dX,int dY)
     {
-        s1 = new shooter(MARGIN,MARGIN, THICKNESS, LENGTH,true);
-        s2 = new shooter(WIDTH - MARGIN - THICKNESS,MARGIN, LENGTH, THICKNESS,true);
+        s1 = new shooter(MARGIN,MARGIN, THICKNESS, LENGTH,1);
+        s2 = new shooter(WIDTH - MARGIN - THICKNESS,MARGIN, LENGTH, THICKNESS,2);
         lock = new ReentrantLock();
     }
     
     public void evolve(double time)
     {
         lock.lock();
-        
-        
-        
-        Ray newLoc = boxOne.bounceRay(ball.getRay(), time);
-        if(newLoc != null)
-            ball.setRay(newLoc);
-        else {
-            newLoc = boxTwo.bounceRay(ball.getRay(), time);
-            if(newLoc != null)
-                ball.setRay(newLoc);
-            else {
-                newLoc = outer.bounceRay(ball.getRay(), time);
-                if(newLoc != null)
-                    ball.setRay(newLoc);
-                else
-                    ball.move(time);
-            }                //copy from Gregg need to revise
-            } 
-        
+            
         lock.unlock();
     }
     
     public void movePlayer(int player,int deltaX,int deltaY)
     {//moving paddles 
         lock.lock();
-        Box mover = boxOne;
-        if(box == 2)
-            mover = boxTwo;
+        /*
+        shooter mover = s1;
+        if(player == 2)
+            mover = s2;
         
         double dX = deltaX;
         double dY = deltaY;
@@ -81,13 +64,13 @@ public class Simulation implements PlantConstants{
             ball.getRay().origin.y += -bumpY;
             } while(mover.contains(ball.getRay().origin));
         }
-        lock.unlock();
+        lock.unlock();*/
     }
-    
+    /*
     public String getGameState() {
         Point ballLoc = ball.getRay().origin;
         
         return Double.toString(ballLoc.x) + ' ' + ballLoc.y + ' ' + 
                 boxOne.y + ' ' + boxTwo.y;
-    }
+    }*/
 }

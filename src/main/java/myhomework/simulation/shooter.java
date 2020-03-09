@@ -33,13 +33,28 @@ public class shooter{
 			height = peashooter.getHeight();}
     }
     
-    public void getHurt(shooter s,bullet b)
-    {   if(s.intersects(b))
-            HP--;
-    }
+public bullet[] shoot(){     
+        double xStep =20;
+            bullet[] b = new bullet[1];  
+            b[0] = new bullet(x-xStep,y);    
+            return b;  
+        }  
+
+    public boolean hit(bullet other){  
+          
+        double x1 = other.x - this.width/2;                 
+        double x2 = other.x + this.width/2 + 5.0;   //set bullet as 2r=5.0 circle
+        double y1 = other.y - this.height/2;               
+        double y2 = other.y + this.height/2 + 5.0; 
+      
+        double playerx = this.x + this.width/2;              
+        double playery = this.y + this.height/2;             
+          
+        return playerx>x1 && playerx<x2 && playery>y1 && playery<y2;  
+    }  
     
-    public boolean intersects()
-    {}
+    public void ifHit()
+    {this.HP-=1;}
     
     public void move(double deltaX,double deltaY)  {    
         x += deltaX;

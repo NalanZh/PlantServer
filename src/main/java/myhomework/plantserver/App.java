@@ -123,15 +123,15 @@ public class App extends Application {
                     // Process request
                     switch (request) {
                         case MOVE_UP: {
-                            game.moveBox(playerNumber, 0, -5);
+                            game.movePlayer(playerNumber, 0, -5);
                             break;
                         }
                         case MOVE_DOWN: {
-                            game.moveBox(playerNumber, 0, 5);
+                            game.movePlayer(playerNumber, 0, 5);
                             break;
                         }
                         case GET_GAME_STATE: {
-                            outputToClient.println(game.getGameState());
+                           // outputToClient.println(game.getGameState());///////////////////////////////////////////////
                             outputToClient.flush();
                             break;
                         }

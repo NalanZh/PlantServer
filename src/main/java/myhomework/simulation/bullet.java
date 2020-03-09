@@ -14,24 +14,26 @@ import myhomework.physics.Vector;
  * @author samsung1
  */
 public class bullet {
+    public double x, y;
+    public int speed= 5;
+   // public double width, height;
+    
+    
+    public bullet(double x,double y){  
+        this.x = x;  
+        this.y = y;  
+       // this.image = game.bullet;   get image or draw one for bullet in simulation        
+      //  this.width = image.width();  
+       // this.height = image.height(); 
+    }  
+  
 
-    private Ray r;
-
-    public bullet(double startX, double startY, double dX, double dY) {
-        Vector v = new Vector(dX, dY);
-        double speed = v.length();
-        r = new Ray(new Point(startX, startY), v, speed);
-    }
-
-    public Ray getRay() {
-        return r;
-    }
-
-    public void setRay(Ray r) {
-        this.r = r;
-    }
-
-    public void move(double time) {
-        r = new Ray(r.endPoint(time), r.v, r.speed);
-    }
+    public void step1(){     
+        y+=speed;  
+    }  
+  
+    public void step2(){     
+        y-=speed;  
+    }  
+  
 }
