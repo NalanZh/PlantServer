@@ -34,10 +34,11 @@ public class shooter{
     }
     
 public bullet[] shoot(){     
-        double xStep =20;
+            double xStep =20;
             bullet[] b = new bullet[1];  
             b[0] = new bullet(x-xStep,y);    
             return b;  
+            // need to rethink! about getGameStatus: hard to include all messy bullets on screen 
         }  
 
     public boolean hit(bullet other){  

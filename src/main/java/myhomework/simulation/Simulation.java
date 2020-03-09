@@ -2,13 +2,10 @@ package myhomework.simulation;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import myhomework.physics.Point;
 import myhomework.plantserver.PlantConstants;
 
-/**
- *
- * @author samsung1
- */
-public class Simulation implements PlantConstants{
+public class Simulation implements PlantConstants{//where things are and what happen to them
     private shooter outer;
     private bullet ball;
     private shooter s1;
@@ -25,14 +22,14 @@ public class Simulation implements PlantConstants{
     public void evolve(double time)
     {
         lock.lock();
-            
+            //evolve for bullet moving
         lock.unlock();
     }
     
     public void movePlayer(int player,int deltaX,int deltaY)
-    {//moving paddles 
+    {//moving players 
         lock.lock();
-        /*
+        
         shooter mover = s1;
         if(player == 2)
             mover = s2;
@@ -47,9 +44,10 @@ public class Simulation implements PlantConstants{
         if(mover.y + deltaY < 0)
            dY = -mover.y;
         if(mover.y + mover.height + deltaY > outer.height)
-           dY = outer.height - mover.height - mover.y;
-        
+           dY = outer.height - mover.height - mover.y;        
         mover.move(dX,dY);
+        
+        /*
         if(mover.contains(ball.getRay().origin)) {
             // If we have discovered that the box has just jumped on top of
             // the ball, we nudge them apart until the box no longer
@@ -63,14 +61,13 @@ public class Simulation implements PlantConstants{
             ball.getRay().origin.x += -bumpX;
             ball.getRay().origin.y += -bumpY;
             } while(mover.contains(ball.getRay().origin));
-        }
-        lock.unlock();*/
+        }*/
+        lock.unlock();
     }
-    /*
+    
     public String getGameState() {
-        Point ballLoc = ball.getRay().origin;
-        
-        return Double.toString(ballLoc.x) + ' ' + ballLoc.y + ' ' + 
-                boxOne.y + ' ' + boxTwo.y;
-    }*/
+       // Point bulletpoint = bullet.getX();        
+       // return Double.toString(ballLoc.x) + ' ' + ballLoc.y + ' ' + s1.y + ' ' + s2.y;
+       return Double.toString(s1.y) + ' ' + s2.y;//how to add the bullet in there
+    }
 }

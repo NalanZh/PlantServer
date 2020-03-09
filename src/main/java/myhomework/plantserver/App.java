@@ -31,7 +31,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        //?????????????????????????game = new Simulation(2, 2);
+        game = new Simulation(2, 2);
 
         // Create a scene and place it in the stage
         Scene scene = new Scene(new ScrollPane(ta), 450, 200);
@@ -131,7 +131,7 @@ public class App extends Application {
                             break;
                         }
                         case GET_GAME_STATE: {
-                           // outputToClient.println(game.getGameState());///////////////////////////////////////////////
+                            outputToClient.println(game.getGameState());// interact with client！！！！！！！！！ see simulation part
                             outputToClient.flush();
                             break;
                         }
