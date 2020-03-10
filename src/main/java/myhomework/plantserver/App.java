@@ -135,6 +135,10 @@ public class App extends Application {
                             outputToClient.flush();
                             break;
                         }
+                        case FIRE: {
+                            game.firePlayer(playerNumber);
+                            break;
+                        }
                     }
                 }
             } catch (Exception ex) {

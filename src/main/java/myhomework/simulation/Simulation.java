@@ -26,7 +26,14 @@ public class Simulation implements PlantConstants{//where things are and what ha
     public void evolve(double time)
     {
         lock.lock();
+          //giving the chance a move:
+        if(b1!=null)
+          {b1.fly(1);
+          }////////
           
+          
+        if(b2!=null)
+          {b2.fly(2);}
         lock.unlock();
     }
     
@@ -53,6 +60,17 @@ public class Simulation implements PlantConstants{//where things are and what ha
         lock.unlock();
     }
     
+        public void firePlayer(int player)
+    {//moving players 
+        lock.lock();  
+        if(player == 1) {
+            b1 = s1.shootbullet();
+        } else {
+            b2 = s2.shootbullet();
+        }
+                lock.unlock();
+    }
+        
     public String getGameState() {
        // Point bulletpoint = bullet.getX();        
        // return Double.toString(ballLoc.x) + ' ' + ballLoc.y + ' ' + s1.y + ' ' + s2.y;

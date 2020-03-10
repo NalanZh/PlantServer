@@ -34,5 +34,9 @@ public class bullet {
         else
         x-=speed; 
     }  
+    
+    public boolean shooted()
+    {return true;}
+    //messege from client: move the paddle
  
 }

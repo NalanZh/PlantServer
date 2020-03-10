@@ -22,13 +22,14 @@ public class shooter{
         this.height = height;
         this.player=playerid;
         if(player==1){
-        Image peashooter = new Image("D:\\COMPUTER SCIENCE\\CMSC250\\Final plants\\PlantServer\\src\\main\\resources\\shooter1.jpg");
+            // "D:\\COMPUTER SCIENCE\\CMSC250\\Final plants\\PlantServer\\src\\main\\resources\\shooter1.jpg
+        Image peashooter = new Image("images/shooter1.jpg");
 			ImageView imageView = new ImageView();
 			imageView.setImage(peashooter);//add children while calling 
 			width = peashooter.getWidth();
 			height = peashooter.getHeight();}
         else
-        {Image peashooter = new Image("D:\\COMPUTER SCIENCE\\CMSC250\\Final plants\\PlantServer\\src\\main\\resources\\shooter2.jpg");
+        {Image peashooter = new Image("images/shooter2.jpg");
 			ImageView imageView = new ImageView();
 			imageView.setImage(peashooter);
 			width = peashooter.getWidth();
@@ -43,9 +44,10 @@ public bullet[] shoot(){
             // need to rethink! about getGameStatus: hard to include all messy bullets on screen 
         }  */
     
-public void shootbullet(shooter s){
-    bullet b=new bullet(s.getX(), s.getY());
-    b.fly(s.player);
+public bullet shootbullet(){
+    bullet b=new bullet(getX(), getY());
+    b.shooted();
+    return b;
 }
 
 public double getX()
