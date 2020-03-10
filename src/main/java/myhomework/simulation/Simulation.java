@@ -6,23 +6,27 @@ import myhomework.physics.Point;
 import myhomework.plantserver.PlantConstants;
 
 public class Simulation implements PlantConstants{//where things are and what happen to them
-    private shooter outer;
-    private bullet ball;
+    private Box outer;
+    private bullet b1;
+    private bullet b2;
     private shooter s1;
     private shooter s2;
     private Lock lock;
     
     public Simulation(int dX,int dY)
     {
+        outer = new Box(0,0,WIDTH,HEIGHT,false);
         s1 = new shooter(MARGIN,MARGIN, THICKNESS, LENGTH,1);
         s2 = new shooter(WIDTH - MARGIN - THICKNESS,MARGIN, LENGTH, THICKNESS,2);
+        b1=new bullet(s1.getX(), s1.getY());
+        b2=new bullet(s2.getX(), s2.getY());
         lock = new ReentrantLock();
     }
     
     public void evolve(double time)
     {
         lock.lock();
-            //evolve for bullet moving
+          
         lock.unlock();
     }
     
@@ -46,28 +50,12 @@ public class Simulation implements PlantConstants{//where things are and what ha
         if(mover.y + mover.height + deltaY > outer.height)
            dY = outer.height - mover.height - mover.y;        
         mover.move(dX,dY);
-        
-        /*
-        if(mover.contains(ball.getRay().origin)) {
-            // If we have discovered that the box has just jumped on top of
-            // the ball, we nudge them apart until the box no longer
-            // contains the ball.
-            int bumpX = -1;
-            if(dX < 0) bumpX = 1;
-            int bumpY = -1;
-            if(dY < 0) bumpY = 1;
-            do {
-            mover.move(bumpX, bumpY);
-            ball.getRay().origin.x += -bumpX;
-            ball.getRay().origin.y += -bumpY;
-            } while(mover.contains(ball.getRay().origin));
-        }*/
         lock.unlock();
     }
     
     public String getGameState() {
        // Point bulletpoint = bullet.getX();        
        // return Double.toString(ballLoc.x) + ' ' + ballLoc.y + ' ' + s1.y + ' ' + s2.y;
-       return Double.toString(s1.y) + ' ' + s2.y;//how to add the bullet in there
+       return Double.toString(b1.x) + ' ' +b1.y+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;
     }
 }

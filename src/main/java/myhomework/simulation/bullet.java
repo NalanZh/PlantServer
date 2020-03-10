@@ -23,17 +23,16 @@ public class bullet {
         this.x = x;  
         this.y = y;  
        // this.image = game.bullet;   get image or draw one for bullet in simulation        
-      //  this.width = image.width();  
+       // this.width = image.width();  
        // this.height = image.height(); 
     }  
   
 
-    public void step1(){     
-        y+=speed;  
+    public void fly(int player){ 
+        if(player==1)
+        x+=speed;  
+        else
+        x-=speed; 
     }  
-  
-    public void step2(){     
-        y-=speed;  
-    }  
-  
+ 
 }
