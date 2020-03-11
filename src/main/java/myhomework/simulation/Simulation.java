@@ -86,6 +86,8 @@ public class Simulation implements PlantConstants{//where things are and what ha
     public String getGameState() {
        // Point bulletpoint = bullet.getX();        
        // return Double.toString(ballLoc.x) + ' ' + ballLoc.y + ' ' + s1.y + ' ' + s2.y;
+       if (b1==null)
+       {b1.x==-1, b1.y==-1;}
        return Double.toString(b1.x) + ' ' +b1.y+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;// how about if b1 b2 are null?????
     }
 }

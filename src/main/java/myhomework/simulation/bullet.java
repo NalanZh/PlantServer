@@ -44,4 +44,10 @@ public class bullet {
     
     public boolean crashOuter()
     {return x>= 450 && x<0;}
+    
+public void setX( double xx)
+{this.x= xx;}
+
+public void setY(double yy)
+{this.y=yy;}
 }
