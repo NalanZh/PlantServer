@@ -142,7 +142,7 @@ public class App extends Application {
                     }
                 }
             } catch (Exception ex) {
-
+                ex.printStackTrace();
             }
         }
     }

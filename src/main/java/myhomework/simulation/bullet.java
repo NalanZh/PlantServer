@@ -15,7 +15,7 @@ import myhomework.physics.Vector;
  */
 public class bullet {
     public double x, y;
-    public int speed= 5;
+    public int speed= 20;
    // public double width, height;
     
     
@@ -38,12 +38,12 @@ public class bullet {
     public boolean shooted()
     {return true;}
     //messege from client: move the paddle
- 
+ /*
     public void delete(bullet b)
-    {b=null;}
+    {b=null;}*/
     
     public boolean crashOuter()
-    {return x>= 450 && x<0;}
+    {return x>= 640 || x<0;}
     
 public void setX( double xx)
 {this.x= xx;}

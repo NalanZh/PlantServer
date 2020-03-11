@@ -17,7 +17,7 @@ public class shooter{
     {
         this.x = x;
         this.y = y;
-        this.HP=10;
+        this.HP=1;
         this.width = width;
         this.height = height;
         this.player=playerid;/*
@@ -77,5 +77,12 @@ public void move(double deltaX,double deltaY)  {
         x += deltaX;
         y += deltaY;
     }
+
+
+public String Win()
+{if (HP==0)
+    return "Game over!";
+  return null;
+}
     
 }

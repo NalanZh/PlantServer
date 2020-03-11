@@ -35,7 +35,7 @@ public class Simulation implements PlantConstants{//where things are and what ha
             {s2.AHH(); }
             
             if(b1.crashOuter())
-            {b1.delete(b1);}
+            {b1.setX(200);}
           }
         
         if(b2!=null)
@@ -43,7 +43,7 @@ public class Simulation implements PlantConstants{//where things are and what ha
             if(s1.hit(b2))
             {s1.AHH();}
             if(b2.crashOuter())
-            {b2.delete(b2);}      
+            {b2 = null;}      
            }
 
         lock.unlock();
@@ -86,8 +86,14 @@ public class Simulation implements PlantConstants{//where things are and what ha
     public String getGameState() {
        // Point bulletpoint = bullet.getX();        
        // return Double.toString(ballLoc.x) + ' ' + ballLoc.y + ' ' + s1.y + ' ' + s2.y;
+       if(b1 == null && b2 == null)
+           return "-1" + ' ' +"-1"+ ' ' +"-1"+ ' ' +"-1"+ ' ' + s1.y+ ' ' +s2.y;//
        if (b1==null)
-       {b1.x==-1, b1.y==-1;}
+            return "-1" + ' ' +"-1"+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;//
+       //{b1.setX(-100); b1.setY(-100);}
+        if (b2==null)
+      // {b2.setX(-100); b1.setY(-100);}
+        return Double.toString(b1.x) + ' ' +b1.y+ ' ' +"-1"+ ' ' +"-1"+ ' ' + s1.y+ ' ' +s2.y;//
        return Double.toString(b1.x) + ' ' +b1.y+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;// how about if b1 b2 are null?????
     }
 }
