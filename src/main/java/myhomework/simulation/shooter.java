@@ -17,10 +17,10 @@ public class shooter{
     {
         this.x = x;
         this.y = y;
-        this.HP=3;
+        this.HP=10;
         this.width = width;
         this.height = height;
-        this.player=playerid;
+        this.player=playerid;/*
         if(player==1){
             // "D:\\COMPUTER SCIENCE\\CMSC250\\Final plants\\PlantServer\\src\\main\\resources\\shooter1.jpg
         Image peashooter = new Image("images/shooter1.jpg");
@@ -33,7 +33,8 @@ public class shooter{
 			ImageView imageView = new ImageView();
 			imageView.setImage(peashooter);
 			width = peashooter.getWidth();
-			height = peashooter.getHeight();}
+			height = peashooter.getHeight();}*/
+        //image is not here! It looks fine for me right now!
     }
  /*   
 public bullet[] shoot(){     

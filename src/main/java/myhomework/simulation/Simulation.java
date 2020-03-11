@@ -32,7 +32,7 @@ public class Simulation implements PlantConstants{//where things are and what ha
             b1.fly(1);
           
             if(s2.hit(b1))
-            {s2.AHH();}
+            {s2.AHH(); }
             
             if(b1.crashOuter())
             {b1.delete(b1);}
@@ -86,6 +86,6 @@ public class Simulation implements PlantConstants{//where things are and what ha
     public String getGameState() {
        // Point bulletpoint = bullet.getX();        
        // return Double.toString(ballLoc.x) + ' ' + ballLoc.y + ' ' + s1.y + ' ' + s2.y;
-       return Double.toString(b1.x) + ' ' +b1.y+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;
+       return Double.toString(b1.x) + ' ' +b1.y+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;// how about if b1 b2 are null?????
     }
 }
