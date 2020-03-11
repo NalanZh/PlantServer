@@ -35,7 +35,7 @@ public class App extends Application {
 
         // Create a scene and place it in the stage
         Scene scene = new Scene(new ScrollPane(ta), 450, 200);
-        primaryStage.setTitle("PongServer"); // Set the stage title
+        primaryStage.setTitle("Plant vs Plants"); // Set the stage title
         primaryStage.setScene(scene); // Place the scene in the stage
         primaryStage.setOnCloseRequest(e -> System.exit(0));
         primaryStage.show(); // Display the stage

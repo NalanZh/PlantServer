@@ -39,4 +39,9 @@ public class bullet {
     {return true;}
     //messege from client: move the paddle
  
+    public void delete(bullet b)
+    {b=null;}
+    
+    public boolean crashOuter()
+    {return x>= 450 && x<0;}
 }

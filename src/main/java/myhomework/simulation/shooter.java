@@ -56,7 +56,7 @@ public double getX()
 public double getY()
 {return y;}
 
-    public void hit(bullet other){  
+public boolean hit(bullet other){  
           
         double xx = other.x - this.width/2;
         double yy = other.y - this.height/2; 
@@ -65,13 +65,14 @@ public double getY()
         double playerx2=this.x + this.width;  
         double playery1= y;
         double playery2=this.y + this.height;  
-          
-        if( xx>=playerx1 && xx<=playerx2 && yy>=playery1 && yy<=playery2)
-            HP-=1;
+                  
+        return xx>=playerx1 && xx<=playerx2 && yy>=playery1 && yy<=playery2;
     }  
-  
-    
-    public void move(double deltaX,double deltaY)  {    
+
+public void AHH()
+    {HP-=1;}
+      
+public void move(double deltaX,double deltaY)  {    
         x += deltaX;
         y += deltaY;
     }

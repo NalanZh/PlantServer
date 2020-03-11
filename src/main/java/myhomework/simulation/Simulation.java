@@ -24,16 +24,28 @@ public class Simulation implements PlantConstants{//where things are and what ha
     }
     
     public void evolve(double time)
-    {
+    {          // go fly bullet
         lock.lock();
-          //giving the chance a move:
+        
         if(b1!=null)
-          {b1.fly(1);
-          }////////
+          { 
+            b1.fly(1);
           
-          
+            if(s2.hit(b1))
+            {s2.AHH();}
+            
+            if(b1.crashOuter())
+            {b1.delete(b1);}
+          }
+        
         if(b2!=null)
-          {b2.fly(2);}
+          {b2.fly(2);
+            if(s1.hit(b2))
+            {s1.AHH();}
+            if(b2.crashOuter())
+            {b2.delete(b2);}      
+           }
+
         lock.unlock();
     }
     
