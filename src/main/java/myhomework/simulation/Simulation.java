@@ -50,8 +50,12 @@ public class Simulation implements PlantConstants{//where things are and what ha
             }      
            }
         
-        if(s1.HP==0|| s2.HP==0)
+        
+        if(s2.HP==0)
         {s1.Win();}///showing the text one the screen
+        if(s1.HP==0)
+        {s2.Win();}
+        
         lock.unlock();
     }
     
@@ -90,12 +94,17 @@ public class Simulation implements PlantConstants{//where things are and what ha
     }
         
     public String getGameState() {
+        if(s1.isWinner() == true)
+            return "One wins";
+        else if(s2.isWinner() == true)
+            return "Two wins";
+        
        if(b1.active == false && b2.active == false)
            return "-1" + ' ' +"-1"+ ' ' +"-1"+ ' ' +"-1"+ ' ' + s1.y+ ' ' +s2.y;//
-       if (b1.active==false)
+       else if (b1.active==false)
             return "-1" + ' ' +"-1"+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;//
        //{b1.setX(-100); b1.setY(-100);}
-        if (b2.active==false)
+       else if (b2.active==false)
       // {b2.setX(-100); b1.setY(-100);}
         return Double.toString(b1.x) + ' ' +b1.y+ ' ' +"-1"+ ' ' +"-1"+ ' ' + s1.y+ ' ' +s2.y;//
        return Double.toString(b1.x) + ' ' +b1.y+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;// 

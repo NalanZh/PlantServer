@@ -12,9 +12,11 @@ public class shooter{
     public double width;
     public double height;
     public int player;
+    public boolean didWin;
     
     public shooter(double x,double y,double width,double height,int playerid)
     {
+        this.didWin = false;
         this.x = x;
         this.y = y;
         this.HP=3;
@@ -79,10 +81,8 @@ public void move(double deltaX,double deltaY)  {
     }
 
 
-public String Win()
-{if (HP==0)
-    return "Game over!";
-  return null;
+public void Win()
+{   didWin = true;
 }
-    
+    public boolean isWinner() { return didWin; }
 }

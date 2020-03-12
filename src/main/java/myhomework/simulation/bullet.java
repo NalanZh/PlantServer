@@ -15,7 +15,7 @@ import myhomework.physics.Vector;
  */
 public class bullet {
     public double x, y;
-    public int speed= 20;
+    public int speed= 38;
     public boolean active;
    // public double width, height;
     
