@@ -17,7 +17,7 @@ public class shooter{
     {
         this.x = x;
         this.y = y;
-        this.HP=1;
+        this.HP=3;
         this.width = width;
         this.height = height;
         this.player=playerid;/*
@@ -46,8 +46,8 @@ public bullet[] shoot(){
         }  */
     
 public bullet shootbullet(){
-    bullet b=new bullet(getX(), getY());
-    b.shooted();
+    bullet b=new bullet(getX(), getY(), true);
+    //b.shooted();
     return b;
 }
 

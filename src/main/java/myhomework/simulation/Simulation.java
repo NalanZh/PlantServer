@@ -18,8 +18,8 @@ public class Simulation implements PlantConstants{//where things are and what ha
         outer = new Box(0,0,WIDTH,HEIGHT,false);
         s1 = new shooter(MARGIN,MARGIN, THICKNESS, LENGTH,1);
         s2 = new shooter(WIDTH - MARGIN - THICKNESS,MARGIN, LENGTH, THICKNESS,2);
-        b1=new bullet(s1.getX(), s1.getY());
-        b2=new bullet(s2.getX(), s2.getY());
+        b1=new bullet(s1.getX(), s1.getY(),false);
+        b2=new bullet(s2.getX(), s2.getY(),false);
         lock = new ReentrantLock();
     }
     
@@ -27,7 +27,7 @@ public class Simulation implements PlantConstants{//where things are and what ha
     {          // go fly bullet
         lock.lock();
         
-        if(b1!=null)
+        if(b1.active!=false)
           { 
             b1.fly(1);
           
@@ -35,17 +35,23 @@ public class Simulation implements PlantConstants{//where things are and what ha
             {s2.AHH(); }
             
             if(b1.crashOuter())
-            {b1.setX(200);}
+            {b1.setX(200);
+             b1.setY(30);}
           }
         
-        if(b2!=null)
+        if(b2.active!=false)
           {b2.fly(2);
             if(s1.hit(b2))
             {s1.AHH();}
             if(b2.crashOuter())
-            {b2 = null;}      
+            {
+                b2.setX(WIDTH-MARGIN-THICKNESS);
+                b2.setY(MARGIN);
+            }      
            }
-
+        
+        if(s1.HP==0|| s2.HP==0)
+        {s1.Win();}///showing the text one the screen
         lock.unlock();
     }
     
@@ -73,27 +79,25 @@ public class Simulation implements PlantConstants{//where things are and what ha
     }
     
         public void firePlayer(int player)
-    {//moving players 
+    {
         lock.lock();  
         if(player == 1) {
             b1 = s1.shootbullet();
         } else {
             b2 = s2.shootbullet();
         }
-                lock.unlock();
+        lock.unlock();
     }
         
     public String getGameState() {
-       // Point bulletpoint = bullet.getX();        
-       // return Double.toString(ballLoc.x) + ' ' + ballLoc.y + ' ' + s1.y + ' ' + s2.y;
-       if(b1 == null && b2 == null)
+       if(b1.active == false && b2.active == false)
            return "-1" + ' ' +"-1"+ ' ' +"-1"+ ' ' +"-1"+ ' ' + s1.y+ ' ' +s2.y;//
-       if (b1==null)
+       if (b1.active==false)
             return "-1" + ' ' +"-1"+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;//
        //{b1.setX(-100); b1.setY(-100);}
-        if (b2==null)
+        if (b2.active==false)
       // {b2.setX(-100); b1.setY(-100);}
         return Double.toString(b1.x) + ' ' +b1.y+ ' ' +"-1"+ ' ' +"-1"+ ' ' + s1.y+ ' ' +s2.y;//
-       return Double.toString(b1.x) + ' ' +b1.y+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;// how about if b1 b2 are null?????
+       return Double.toString(b1.x) + ' ' +b1.y+ ' ' +b2.x+ ' ' +b2.y+ ' ' + s1.y+ ' ' +s2.y;// 
     }
 }
